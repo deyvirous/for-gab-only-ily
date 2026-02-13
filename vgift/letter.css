@@ -1,0 +1,214 @@
+/* ===== General Reset ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Georgia", serif;
+}
+
+/* ===== Body Styling ===== */
+body {
+  background-image: /*linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)),*/ url("Download premium image of Pink clouds background, watercolor hearts border by Aew about hearts background, heart, border aesthetic, love, and valentine background 8697904.jfif");
+  background-size: cover;       /* Makes it fill the screen */
+  background-position: center;  /* Centers the image */
+  background-repeat: no-repeat; /* Prevents tiling */
+  background-attachment: fixed; /* Optional: subtle parallax feel */
+
+  color: #5a4634;
+  padding: 60px 8%;
+}
+
+
+/* ===== Main Title ===== */
+.main-title {
+  text-align: center;
+  font-size: 2.7rem;
+  margin-bottom: 70px;
+  letter-spacing: 1px;
+  font-family: "Lucida Handwriting", cursive;
+  color: #d880a3;
+  opacity: 0;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+/* ===== Section Header ===== */
+.section-title {
+  font-size: 1.6rem;
+  margin-bottom: 25px;
+  padding-left: 15px;
+  border-left: 6px solid #f8c8dc;
+  color: #f8c8dc;
+}
+
+/* ===== Gallery Grid ===== */
+.labels {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+/* ===== Scrapbook Photo Style ===== */
+.labels img {
+  width: 100%;
+  aspect-ratio: 1 / 1;      /* Makes them square */
+  object-fit: cover;
+  background: white;
+  padding: 12px;
+  border-radius: 6px;
+  box-shadow: 5px 8px 18px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+/* Slight random scrapbook rotation */
+.labels img:nth-child(odd) {
+  transform: rotate(-2deg);
+}
+
+.labels img:nth-child(even) {
+  transform: rotate(2deg);
+}
+
+/* Hover Effect */
+.labels img:hover {
+  transform: rotate(0deg) scale(1.05);
+  z-index: 5;
+}
+
+html {
+  scroll-behavior: smooth; /* smooth scrolling */
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #a14d6e; /* scrapbook rose */
+  color: white;
+  padding: 12px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.back-to-top:hover {
+  transform: translateY(-3px);
+  background-color: #8b5e74;
+}
+
+.music-player {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  background: #fff8f9;
+  padding: 18px 25px;
+  border-radius: 18px;
+  box-shadow: 5px 8px 18px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  border: 2px solid #f3c6d3;
+  transform: rotate(-2deg);
+}
+
+.music-title {
+  font-family: "Lucida Handwriting", cursive;
+  font-size: 0.9rem;
+  color: #a14d6e;
+  margin-bottom: 10px;
+}
+
+.music-player button {
+  background: #f8c8dc;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #6b4e36;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.music-player button:hover {
+  transform: scale(1.05);
+  background: #f3a9c4;
+}
+
+.scrapbook-message {
+  margin-top: 100px;
+  padding: 40px;
+  background: #fff8f9;
+  border-radius: 20px;
+  box-shadow: 5px 8px 18px rgba(0, 0, 0, 0.12);
+  border: 2px solid #f3c6d3;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  transform: rotate(-1deg);
+  position: relative;
+}
+
+.scrapbook-message h3 {
+  font-family: "Lucida Handwriting", cursive;
+  color: #a14d6e;
+  margin-bottom: 15px;
+}
+
+.scrapbook-message p {
+  color: #6b4e36;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.scrapbook-message::before {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.6);
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-5deg);
+  border-radius: 4px;
+}
+
+/* ===== Tablet ===== */
+@media (max-width: 1024px) {
+  .labels {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 600px) {
+  body {
+    padding: 30px 5%;
+  }
+
+  .labels {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .main-title {
+    font-size: 2rem;
+  }
+
+  .scrapbook-message {
+    padding: 25px;
+  }
+
+  .music-player {
+    bottom: 15px;
+    left: 15px;
+    padding: 12px 18px;
+  }
+}
+
+/* ===== Fade In Animation ===== */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
