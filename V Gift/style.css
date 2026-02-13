@@ -1,0 +1,138 @@
+/* Color Variables */
+:root {
+    --primary-red: #d880a3;
+    --paper-color: #f5ede3;
+    --envelope-color: #ff7675;
+    --bg-color: #f8c8dc ;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: var(--bg-color);
+    font-family: 'Georgia', serif;
+}
+
+/* Container for the whole interaction */
+.envelope-wrapper {
+    position: relative;
+    cursor: pointer;
+}
+
+/* The main body of the envelope */
+.envelope {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    background-color: var(--envelope-color);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    z-index: 2;
+}
+
+/* The Top Flap (The Triangle) */
+.envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    z-index: 4;
+    border-top: 110px solid var(--primary-red);
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    transform-origin: top;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* The side folds of the envelope */
+.envelope::after {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    width: 0;
+    height: 0;
+    border-top: 100px solid transparent;
+    border-left: 150px solid var(--bg-color); 
+    border-right: 150px solid var(--bg-color);
+    border-bottom: 100px solid var(--envelope-color);
+    border-radius: 0 0 10px 10px;
+}
+
+/* The Paper Letter Inside */
+.letter {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    width: 260px;
+    height: 180px;
+    background-color: var(--paper-color);
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    transition: transform 0.5s ease-in-out;
+    z-index: 1; /* Starts behind the envelope */
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: var(--primary-red);
+}
+
+.heart {
+    font-size: 30px;
+    margin: 10px 0;
+}
+
+.click-me {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Animation: When hovering over the wrapper */
+.envelope-wrapper:hover .envelope::before {
+    transform: rotateX(180deg);
+    z-index: 0; /* Moves flap behind so letter can slide out */
+}
+
+.envelope-wrapper:hover .letter {
+    transform: translateY(-120px);
+    z-index: 5; /* Brings letter to the very front */
+}
+
+.hint {
+    position: absolute;
+    bottom: -50px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+/* This makes sure the animation triggers on mobile tap too */
+.envelope-wrapper.open .envelope::before,
+.envelope-wrapper:hover .envelope::before {
+    transform: rotateX(180deg);
+    z-index: 0;
+}
+
+.envelope-wrapper.open .letter,
+.envelope-wrapper:hover .letter {
+    transform: translateY(-120px);
+    z-index: 5;
+}
+
+/* Adjust size for small phone screens */
+@media (max-width: 400px) {
+    .envelope, .envelope::before, .envelope::after {
+        width: 250px;
+    }
+    .letter {
+        width: 210px;
+    }
+    .envelope::before, .envelope::after {
+        border-left-width: 125px;
+        border-right-width: 125px;
+    }
+}
